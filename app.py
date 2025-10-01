@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from scraper import fetch_all_results
-from export_utils import export_to_pdf
+# from export_utils import export_to_pdf
 from analytics import show_analytics
 from PIL import Image
 import os
@@ -127,7 +127,8 @@ with st.form("result_form"):
         "cgpa": "Sort by CGPA (High to Low)",
         "semester": "Sort by Latest Semester Grade"
     }[x])
-    export_format = st.selectbox("Export Format", options=["pdf", "txt", "csv", "xlsx"], format_func=lambda x: x.upper())
+    # export_format = st.selectbox("Export Format", options=["pdf", "txt", "csv", "xlsx"], format_func=lambda x: x.upper())
+    export_format = st.selectbox("Export Format", options=["txt", "csv", "xlsx"], format_func=lambda x: x.upper())
     submitted = st.form_submit_button("Fetch Results")
 
 if submitted:
@@ -220,20 +221,20 @@ if submitted:
                 unsafe_allow_html=True
             )
         os.remove(export_path)
-    elif export_format == "pdf":
-        export_path = "results.pdf"
-        export_to_pdf(df, export_path)
-        with open(export_path, "rb") as f:
-            st.download_button(label="Download PDF", data=f, file_name=export_path)
-            st.markdown("---")
-            st.markdown(
-                "<div style='text-align: center; color: grey;'>"
-                "Made with ❤️ by <b>Aditya Kumar</b><br>"
-                "Department of Computer Science & Engineering<br>"
-                "Gaya College of Engineering (GCE), under BEU Patna"
-                "</div>",
-                unsafe_allow_html=True
-            )
-        os.remove(export_path)
+    # elif export_format == "pdf":
+    #     export_path = "results.pdf"
+    #     export_to_pdf(df, export_path)
+    #     with open(export_path, "rb") as f:
+    #         st.download_button(label="Download PDF", data=f, file_name=export_path)
+    #         st.markdown("---")
+    #         st.markdown(
+    #             "<div style='text-align: center; color: grey;'>"
+    #             "Made with ❤️ by <b>Aditya Kumar</b><br>"
+    #             "Department of Computer Science & Engineering<br>"
+    #             "Gaya College of Engineering (GCE), under BEU Patna"
+    #             "</div>",
+    #             unsafe_allow_html=True
+    #         )
+    #     os.remove(export_path)
 
 
