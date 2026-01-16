@@ -278,7 +278,7 @@ else:
             college = st.selectbox("College", options=list(college_codes.keys()), format_func=lambda x: college_codes[x], key="college_v2")
             # Default to semester 3 (index 2 in 1..8 list)
             semester = st.selectbox("Semester", options=list(range(1, 9)), format_func=lambda x: f"{x} ({sem_words[x]})", index=2, key="sem_v2")
-            batch = st.number_input("Batch (e.g., 24 for 2023-27)", min_value=20, max_value=30, value=23, key="batch_v2")
+            batch = st.number_input("Batch (e.g., 23 for 2023-27)", min_value=20, max_value=30, value=23, key="batch_v2")
             exam_year = st.number_input("Exam Year", min_value=2020, max_value=2030, value=2025, key="exam_year_v2")
         
         include_le = st.checkbox("Include LE (Lateral Entry) Students", value=False, key="include_le_v2")
