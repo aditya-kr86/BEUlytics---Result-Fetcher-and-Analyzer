@@ -272,12 +272,14 @@ else:
             reg_start = st.number_input("Start Reg No. (e.g., 1)", min_value=1, max_value=999, value=1, key="reg_start_v2")
             reg_end = st.number_input("End Reg No. (e.g., 50)", min_value=1, max_value=999, value=50, key="reg_end_v2")
             branch = st.selectbox("Branch", options=list(branch_codes.keys()), format_func=lambda x: branch_codes[x], key="branch_v2")
+            exam_month = st.selectbox("Exam Month", options=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], index=6, key="exam_month_v2")
         
         with col2:
             college = st.selectbox("College", options=list(college_codes.keys()), format_func=lambda x: college_codes[x], key="college_v2")
             # Default to semester 3 (index 2 in 1..8 list)
             semester = st.selectbox("Semester", options=list(range(1, 9)), format_func=lambda x: f"{x} ({sem_words[x]})", index=2, key="sem_v2")
             batch = st.number_input("Batch (e.g., 24 for 2023-27)", min_value=20, max_value=30, value=23, key="batch_v2")
+            exam_year = st.number_input("Exam Year", min_value=2020, max_value=2030, value=2025, key="exam_year_v2")
         
         include_le = st.checkbox("Include LE (Lateral Entry) Students", value=False, key="include_le_v2")
         submitted_v2 = st.form_submit_button("🔍 Fetch Results")
@@ -296,8 +298,8 @@ else:
                         semester, 
                         batch, 
                         include_lateral=include_le,
-                        exam_month="July",
-                        exam_year=2025
+                        exam_month=exam_month,
+                        exam_year=exam_year
                     )
                     
                     if results and len(results) > 0:
