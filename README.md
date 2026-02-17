@@ -82,4 +82,4 @@ This project is open-source under the MIT License.
 
 ---
 
-> Made with ❤️ by [Aditya Kumar](https://adityakr.me)
+> Made with ❤️ by [Aditya Kumar](https://ankus.dev)
